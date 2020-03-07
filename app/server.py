@@ -46,9 +46,11 @@ def move():
     data = bottle.request.json
     print("MOVE:", json.dumps(data))
 
-    # Choose a random direction to move in
+    # Choose a random direction to move in that will not result in death
     directions = ["up", "down", "left", "right"]
     move = random.choice(directions)
+
+
 
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
