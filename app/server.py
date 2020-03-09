@@ -1,6 +1,8 @@
 import json
 import os
 import random
+from board import GameBoard
+
 
 import bottle
 from bottle import HTTPResponse
@@ -10,6 +12,8 @@ from bottle import HTTPResponse
 def index():
     return "Your Battlesnake is alive!"
 
+def init(data):
+    grid = GameBoard(data['board']['height'], data['board']['width'])
 
 @bottle.post("/ping")
 def ping():
@@ -48,9 +52,7 @@ def move():
 
     # Choose a random direction to move in that will not result in death
     directions = ["up", "down", "left", "right"]
-    move = random.choice(directions)
-
-
+    move = random.choice(directions)   
 
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
